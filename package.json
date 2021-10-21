@@ -6,11 +6,12 @@
     "scripts": {
         "lint": "eslint --fix --ext .ts,.tsx ./src/*/**",
         "build": "tsc -p tsconfig.json",
-        "prepublishOnly": "npm run build"
+        "prepublishOnly": "npm run build",
+        "test": "ts-node ./src/models"
     },
     "bin": {
-        "rap": "./dist/models.js",
-        "rapper": "./dist/models.js"
+        "rap2itf": "./dist/models.js",
+        "rap": "./dist/models.js"
     },
     "keywords": [
         "api",
