@@ -203,10 +203,13 @@ export default async function ({
   const tempoutfiles = await getWriteFile(existFileList,outputFiles)
 
   return Promise.all(tempoutfiles.map(async ({ path, content }) => {
-    writeFile(path, content)
+   
+    writeFile(path, content).then(() => {
+      spinner.succeed(chalk.green(`rapper：写入成功：${path}`));
+    })
   }))
     .then(() => {
-      spinner.succeed(chalk.green(`rapper: 成功！共同步了 ${tempoutfiles.length} 个接口`));
+      spinner.succeed(chalk.green(`rapper: 共同步了 ${tempoutfiles.length} 个接口`));
     })
     .catch((err) => {
       spinner.fail(chalk.red(`rapper: 失败！${err.message}`));

@@ -36,6 +36,7 @@ const getConfig = () => {
     .option('--apiUrl <apiUrl>', '设置Rap平台后端地址')
     .option('--rapUrl <rapUrl>', '设置Rap平台前端地址')
     .option('--rapperPath <rapperPath>', '设置生成代码所在目录')
+    .option('--interfaceId <interfaceId>', '设置接口要生成的接口的id')
   program.parse(process.argv);
 
   let rapperConfig: IRapper;
@@ -57,6 +58,5 @@ const getConfig = () => {
       ...others
     };
   }
-  console.log('rapperConfig',rapperConfig)
   rapper(rapperConfig);
 })();
