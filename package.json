@@ -1,7 +1,7 @@
 {
     "name": "rap2itf",
     "version": "1.0.0",
-    "description": "rapper, 接口转换为typescirpt interface",
+    "description": "rapper接口转换为typescirpt interface",
     "main": "./dist/index.js",
     "scripts": {
         "lint": "eslint --fix --ext .ts,.tsx ./src/*/**",
