@@ -24,7 +24,7 @@ export function writeFile(filepath: string, contents: string) {
       fs.writeFile(filepath, contents, err => {
         if (err) return reject(`filepath: ${filepath}, ${err}`);
         resolve();
-        
+
       });
     });
   });
@@ -64,7 +64,7 @@ export function getMd5(fileContent: string) {
 
 /** 模板文件覆盖确认 */
 export async function fileOverWiriteconfirm(message: string) {
-  
+
   const question = [
     {
       name: 'confirm',
