@@ -85,7 +85,7 @@ const getWriteFile = async (existFileList:string[], outputFiles:IWriteFile[]) =>
   }
 
   return tempoutfiles
-  
+
 }
 
 export default async function ({
@@ -103,7 +103,7 @@ export default async function ({
   const spinner = ora(chalk.grey('rapper: 开始检查版本'));
   spinner.start();
 
-  
+
   /** 检查版本，给出升级提示 */
   try {
     const newVersion = await latestVersion('rap', rapperVersion.indexOf('beta') > -1);
@@ -136,20 +136,6 @@ export default async function ({
   apiUrl = apiUrl.replace(/\/$/, '');
 
   /** 校验当前 rapper 的版本是否比旧模板代码版本低，强制升级 */
-  const oldFilesRapperVersion = findRapperVersion(rapperPath);
-  if (oldFilesRapperVersion && semver.lt(rapperVersion, oldFilesRapperVersion)) {
-    return new Promise(() => {
-      spinner.fail(
-        chalk.red(
-          'rapper 执行失败: 当前环境 rapper 版本低于已经生成的模板文件版本，为避免低版本覆盖高版本，请您升级',
-        ),
-      );
-      console.log(`  当前版本: ${chalk.grey(rapperVersion)}`);
-      console.log(`  当前模板文件版本: ${chalk.cyan(oldFilesRapperVersion)}`);
-    });
-  }
-
-
   /** 输出文件集合 */
   let outputFiles:IWriteFile[] = [];
   /** 所有接口集合 */
@@ -203,13 +189,14 @@ export default async function ({
   const tempoutfiles = await getWriteFile(existFileList,outputFiles)
 
   return Promise.all(tempoutfiles.map(async ({ path, content }) => {
-   
+
     writeFile(path, content).then(() => {
-      spinner.succeed(chalk.green(`rapper：写入成功：${path}`));
+      spinner.succeed(chalk.green(`写入成功： ${path}`));
     })
   }))
     .then(() => {
-      spinner.succeed(chalk.green(`rapper: 共同步了 ${tempoutfiles.length} 个接口`));
+      spinner.succeed(chalk.green(`
+      共同步了 ${tempoutfiles.length} 个接口`));
     })
     .catch((err) => {
       spinner.fail(chalk.red(`rapper: 失败！${err.message}`));

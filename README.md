@@ -20,7 +20,7 @@ npm i rap2itf -D
 yarn add rap2itf -D
 ```
 
-2. 在项目根目录添加配置文件 .raprc.js 添加一下配置内容
+2. 在项目根目录添加配置文件.raprc.js 添加一下配置内容
 
 ```javascript
 module.exports = {
