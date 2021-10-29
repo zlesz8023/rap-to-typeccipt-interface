@@ -1,6 +1,6 @@
 {
     "name": "rap2itf",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "rapper接口转换为typescirpt interface",
     "main": "./dist/index.js",
     "scripts": {
