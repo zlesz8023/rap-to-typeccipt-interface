@@ -103,25 +103,9 @@ export default async function ({
   const spinner = ora(chalk.grey('rapper: 开始检查版本'));
   spinner.start();
 
-
-  /** 检查版本，给出升级提示 */
-  try {
-    const newVersion = await latestVersion('rap', rapperVersion.indexOf('beta') > -1);
-    if (semver.lt(rapperVersion, newVersion)) {
-      spinner.warn(chalk.yellow('rapper 升级提示: '));
-      console.log(`  当前版本: ${chalk.grey(rapperVersion)}`);
-      console.log(`  最新版本: ${chalk.cyan(newVersion)}`);
-      // console.log(
-      //   `  运行 ${chalk.green(`npm i -D ${packageJson.name}@latest && npm run rapper`)} 即可升级`,
-      // );
-    }
-  } catch (err) {
-    spinner.warn(`rapper 版本检查失败，${err.message}`);
-  }
-
   /** 参数校验 */
-  spinner.start(chalk.grey('rapper: 开始校验参数'));
-  spinner.succeed(chalk.grey('rapper: 参数校验成功'));
+  // spinner.start(chalk.grey('rapper: 开始校验参数'));
+  // spinner.succeed(chalk.grey('rapper: 参数校验成功'));
   DEFAULT_OPTIONS.style = {
     ...DEFAULT_OPTIONS.style,
     singleQuote: true,
@@ -135,7 +119,6 @@ export default async function ({
   rapUrl = rapUrl.replace(/\/$/, '');
   apiUrl = apiUrl.replace(/\/$/, '');
 
-  /** 校验当前 rapper 的版本是否比旧模板代码版本低，强制升级 */
   /** 输出文件集合 */
   let outputFiles:IWriteFile[] = [];
   /** 所有接口集合 */
@@ -191,12 +174,11 @@ export default async function ({
   return Promise.all(tempoutfiles.map(async ({ path, content }) => {
 
     writeFile(path, content).then(() => {
-      spinner.succeed(chalk.green(`写入成功： ${path}`));
+      spinner.succeed(chalk.green(`写入成功: ${path}`));
     })
   }))
     .then(() => {
-      spinner.succeed(chalk.green(`
-      共同步了 ${tempoutfiles.length} 个接口`));
+      spinner.succeed(chalk.green(`共同步了 ${tempoutfiles.length} 个接口`));
     })
     .catch((err) => {
       spinner.fail(chalk.red(`rapper: 失败！${err.message}`));
