@@ -8,7 +8,7 @@
         "prettierBuild": "prettier --write ./dist/*.{js,}",
         "build": "tsc -p tsconfig.json && npm run prettierBuild",
         "prepublishOnly": "npm run build",
-        "test": "ts-node ./src/models"
+        "test": "ts-node ./src/models --p 38 --i 455 --token ererr"
     },
     "bin": {
         "rap2itf": "./dist/models.js",

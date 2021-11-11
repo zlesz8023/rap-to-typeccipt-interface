@@ -52,9 +52,6 @@ function isFileChange(contentArr: string[]): boolean {
   return oldMD5 !== getMd5(contentArr.slice(1).join('\n'))
 }
 
-
-
-
 /**
  * 扫描找出生成的模板文件是否被手动修改过
  * @param rapperPath, 模板文件地址

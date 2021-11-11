@@ -96,7 +96,9 @@ export default async function ({
   // urlMapper = (t) => t,
   codeStyle,
   interfaceId,
-  split=2
+  split = 2,
+  token,
+  projectId
 }: IRapper) {
   const rapperVersion: string = packageJson.version;
   console.log(`当前rapper版本: ${chalk.grey(rapperVersion)}`);
@@ -104,7 +106,18 @@ export default async function ({
   spinner.start();
 
   /** 参数校验 */
-  // spinner.start(chalk.grey('rapper: 开始校验参数'));
+  spinner.start(chalk.grey('rapper: 开始校验参数'));
+  if (!projectId) {
+    spinner.fail(chalk.grey('rapper: 没有配置projectId，无法项目信息'));
+    process.exit(0)
+  }
+  if (!token) {
+    spinner.fail(chalk.grey('rapper: 没有配置token，无法获取接口信息'));
+    process.exit(0)
+  }
+  if (!interfaceId) {
+    spinner.warn(chalk.gray ('rapper: interfaceId 没有配置，将会获取项目下所有接口 '));
+  }
   // spinner.succeed(chalk.grey('rapper: 参数校验成功'));
   DEFAULT_OPTIONS.style = {
     ...DEFAULT_OPTIONS.style,

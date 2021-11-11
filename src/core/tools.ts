@@ -87,8 +87,6 @@ export async function getInterfaces(rapApiUrl: string) {
   return trimInterfaces(interfaces)
 }
 
-
-
 /** 生成提示文案 */
 export function creatHeadHelpStr(rapperVersion: string): string {
   return `
