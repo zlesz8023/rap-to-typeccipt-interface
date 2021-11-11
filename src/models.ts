@@ -39,9 +39,9 @@ const getConfig = () => {
     .option('--interfaceId <interfaceId>', '接口id')
     .option('--projectId <projectId>', '项目id')
     .option('--p <p>', '项目id')
-    .option('--token <token>', 'token项目')
-    .option('--split <split>', '文件名的取值路径')
-    .option('--s <s>', 'token项目')
+    .option('--token <token>', '用户token')
+    .option('--split <split>', '截取路径长度作为文件名')
+    .option('--s <s>', '截取路径长度作为文件名')
     program.parse(process.argv);
 
 

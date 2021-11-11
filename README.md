@@ -68,6 +68,21 @@ module.exports = {
  npm run rap
 ```
 
+4. 命令行参数
+
+```
+  .option('--apiUrl <apiUrl>', '设置Rap平台后端地址')
+  .option('--rapUrl <rapUrl>', '设置Rap平台前端地址')
+  .option('--rapperPath <rapperPath>', '设置生成代码所在目录')
+  .option('--i <i>', '接口id')
+  .option('--interfaceId <interfaceId>', '接口id')
+  .option('--projectId <projectId>', '项目id')
+  .option('--p <p>', '项目id')
+  .option('--token <token>', '用户token')
+  .option('--split <split>', '截取路径长度作为文件名')
+  .option('--s <s>', '截取路径长度作为文件名')
+```
+
 ## 参考文档
 
 没有文档了
